@@ -1,2 +1,57 @@
 <!DOCTYPE html>
-<html><body><h1>Ahoj světe!</h1></body></html>
+<html>
+<head>
+<style>
+.chat-popup {display:none;position:fixed;bottom:20px;right:20px;border:3px solid #f1f1f1;z-index:9;border-radius:10px;}
+.form-container {max-width:300px;padding:10px;background-color:white;}
+.form-container input {width:100%;padding:15px;margin:5px 0 22px 0;border:none;background:#f1f1f1;}
+.form-container input:focus {background-color:#ddd;outline:none;}
+.form-container .btn {background-color:#04AA6D;color:white;padding:16px 20px;border:none;cursor:pointer;width:100%;margin-bottom:10px;opacity:0.8;border-radius:5px;}
+.form-container .cancel {background-color:#f44336;}
+.form-container .btn:hover,.open-button:hover {opacity:1;}
+.open-button {background-color:#04AA6D;color:white;padding:16px 20px;border:none;cursor:pointer;opacity:0.8;border-radius:50%;position:fixed;bottom:23px;right:23px;width:60px;height:60px;}
+#chatMessages {height:200px;overflow-y:scroll;border:1px solid #ccc;padding:10px;margin-bottom:10px;background:white;border-radius:5px;}
+</style>
+</head>
+<body>
+<h1>Ahoj světe!</h1>
+
+<button class="open-button" onclick="openForm()">💬</button>
+
+<div class="chat-popup" id="myForm">
+  <div class="form-container">
+    <div id="chatMessages"></div>
+    <input type="text" id="msgInput" placeholder="Napiš zprávu..." name="msg">
+    <button type="submit" class="btn" onclick="sendMessage()">Odeslat</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Zavřít</button>
+  </div>
+</div>
+
+<script>
+function openForm() {document.getElementById("myForm").style.display="block";}
+function closeForm() {document.getElementById("myForm").style.display="none";}
+function sendMessage() {
+  let input = document.getElementById("msgInput");
+  let messages = document.getElementById("chatMessages");
+  let msg = input.value;
+  if(msg) {
+    messages.innerHTML += "<p><b>Ty:</b> " + msg + "</p>";
+    input.value = "";
+    messages.scrollTop = messages.scrollHeight;
+    
+    // Bot odpověď (simulace)
+    setTimeout(() => {
+      let botReply = "Díky za zprávu! Toto je jednoduchý chat na GitHub Pages.";
+      messages.innerHTML += "<p><b>Bot:</b> " + botReply + "</p>";
+      messages.scrollTop = messages.scrollHeight;
+    }, 500);
+  }
+}
+document.getElementById("msgInput").addEventListener("keypress", function(e) {
+  if(e.key === 'Enter') sendMessage();
+});
+</script>
+</body>
+</html>
+
+
