@@ -1,80 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-.chat-popup {display:none;position:fixed;bottom:20px;right:20px;border:3px solid #f1f1f1;z-index:9;border-radius:10px;}
-.form-container {max-width:300px;padding:10px;background-color:white;}
-.form-container input {width:100%;padding:15px;margin:5px 0 22px 0;border:none;background:#f1f1f1;}
-.form-container input:focus {background-color:#ddd;outline:none;}
-.form-container .btn {background-color:#0066cc;color:white;padding:16px 20px;border:none;cursor:pointer;width:100%;margin-bottom:10px;opacity:0.8;border-radius:5px;}
-.form-container .cancel {background-color:#f44336;}
-.form-container .btn:hover,.open-button:hover {opacity:1;}
-.open-button {background-color:#0066cc;color:white;padding:16px 20px;border:none;cursor:pointer;opacity:0.8;border-radius:50%;position:fixed;bottom:23px;right:23px;width:60px;height:60px;}
-#chatMessages {height:200px;overflow-y:scroll;border:1px solid #ccc;padding:10px;margin-bottom:10px;background:white;border-radius:5px;}
-.clear-btn {background-color:#666;font-size:12px;padding:5px 10px;}
-</style>
+  <title>🌍 WORLDWIDE CHAT</title>
+  <style>
+    body { font-family: Arial; max-width: 600px; margin: 50px auto; padding: 20px; }
+    #chatMessages { height: 400px; overflow-y: scroll; border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; background: #f9f9f9; }
+    #msgInput { width: 70%; padding: 10px; }
+    button { width: 25%; padding: 10px; background: #007bff; color: white; border: none; cursor: pointer; }
+  </style>
 </head>
 <body>
-<h1>Ahojte, sem vytvořil jednoduchý web s chatem!</h1>
-
-<button class="open-button" onclick="openForm()">💬</button>
-
-<div class="chat-popup" id="myForm">
-  <div class="form-container">
-    <div id="chatMessages"></div>
-    <input type="text" id="msgInput" placeholder="Napiš zprávu..." name="msg">
-    <button type="submit" class="btn" onclick="sendMessage()">Odeslat</button>
-    <button type="button" class="btn clear-btn" onclick="clearChat()">Vymazat chat</button>
-    <button type="button" class="btn cancel" onclick="closeForm()">Zavřít</button>
-  </div>
-</div>
-
-<script>
-// Načíst zprávy při spuštění stránky
-window.onload = function() {
-  loadChatHistory();
-};
-
-function openForm() {document.getElementById("myForm").style.display="block";}
-function closeForm() {document.getElementById("myForm").style.display="none";}
-
-function sendMessage() {
-  let input = document.getElementById("msgInput");
-  let messages = document.getElementById("chatMessages");
-  let msg = input.value.trim();
+  <h1>🌍 WORLDWIDE ANONYMNÍ CHAT</h1>
+  <p>Kdokoli z celého světa může napsat (bez registrace!)</p>
   
-  if(msg) {
-    // Uložit zprávu do localStorage
-    let chatHistory = JSON.parse(localStorage.getItem('chatHistory') || '[]');
-    chatHistory.push({user: 'Ty', message: msg, time: new Date().toLocaleTimeString()});
-    localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
+  <div id="chatMessages"></div>
+  <input type="text" id="msgInput" placeholder="Napiš zprávu..." onkeypress="if(event.key=='Enter') sendMessage()">
+  <button onclick="sendMessage()">Odeslat 🚀</button>
+
+  <script>
+    // ← TVŮJ ENDPOINT ZDE!
+    const FORMSPREE_URL = 'https://formspree.io/f/xaqelrva'; 
     
-    // Zobrazit zprávu
-    messages.innerHTML += `<p><b>Ty (${new Date().toLocaleTimeString()}):</b> ${msg}</p>`;
-    input.value = "";
-    messages.scrollTop = messages.scrollHeight;
-  }
-}
-
-function loadChatHistory() {
-  let chatHistory = JSON.parse(localStorage.getItem('chatHistory') || '[]');
-  let messages = document.getElementById("chatMessages");
-  
-  messages.innerHTML = "";
-  chatHistory.forEach(msgObj => {
-    messages.innerHTML += `<p><b>${msgObj.user} (${msgObj.time}):</b> ${msgObj.message}</p>`;
-  });
-  messages.scrollTop = messages.scrollHeight;
-}
-
-function clearChat() {
-  localStorage.removeItem('chatHistory');
-  document.getElementById("chatMessages").innerHTML = "";
-}
-
-document.getElementById("msgInput").addEventListener("keypress", function(e) {
-  if(e.key === 'Enter') sendMessage();
-});
-</script>
+    function sendMessage() {
+      let msg = document.getElementById("msgInput").value.trim();
+      if(msg) {
+        fetch(FORMSPREE_URL, {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({
+            email: 'chat@proton.me',
+            message: `🌍 **Anonymní:** ${msg}`,
+            _subject: 'Nová zpráva z WORLDWIDE CHAT'
+          })
+        }).then(() => {
+          document.getElementById("chatMessages").innerHTML += 
+            `<p><strong>Ty (${new Date().toLocaleTimeString()}):</strong> ${msg} ✅</p>`;
+          document.getElementById("msgInput").value = "";
+          document.getElementById("chatMessages").scrollTop = document.getElementById("chatMessages").scrollHeight;
+        });
+      }
+    }
+  </script>
 </body>
 </html>
