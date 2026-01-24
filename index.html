@@ -6,15 +6,15 @@
 .form-container {max-width:300px;padding:10px;background-color:white;}
 .form-container input {width:100%;padding:15px;margin:5px 0 22px 0;border:none;background:#f1f1f1;}
 .form-container input:focus {background-color:#ddd;outline:none;}
-.form-container .btn {background-color:#04AA6D;color:white;padding:16px 20px;border:none;cursor:pointer;width:100%;margin-bottom:10px;opacity:0.8;border-radius:5px;}
+.form-container .btn {background-color:#0066cc;color:white;padding:16px 20px;border:none;cursor:pointer;width:100%;margin-bottom:10px;opacity:0.8;border-radius:5px;}
 .form-container .cancel {background-color:#f44336;}
 .form-container .btn:hover,.open-button:hover {opacity:1;}
-.open-button {background-color:#04AA6D;color:white;padding:16px 20px;border:none;cursor:pointer;opacity:0.8;border-radius:50%;position:fixed;bottom:23px;right:23px;width:60px;height:60px;}
+.open-button {background-color:#0066cc;color:white;padding:16px 20px;border:none;cursor:pointer;opacity:0.8;border-radius:50%;position:fixed;bottom:23px;right:23px;width:60px;height:60px;}
 #chatMessages {height:200px;overflow-y:scroll;border:1px solid #ccc;padding:10px;margin-bottom:10px;background:white;border-radius:5px;}
 </style>
 </head>
 <body>
-<h1>Ahojte,sem vytvořil jednoduchý web na chat, bez cenzury,kdo nema signal može psat tady...,</h1>
+<h1>Ahojte,sem vytvořil jednoduchy web, edom na chat.. kdo nema signal..</h1>
 
 <button class="open-button" onclick="openForm()">💬</button>
 
@@ -38,11 +38,6 @@ function sendMessage() {
     messages.innerHTML += "<p><b>Ty:</b> " + msg + "</p>";
     input.value = "";
     messages.scrollTop = messages.scrollHeight;
-    
-    // Bot odpověď (simulace)
-    setTimeout
-      
-    }, 500);
   }
 }
 document.getElementById("msgInput").addEventListener("keypress", function(e) {
@@ -51,5 +46,3 @@ document.getElementById("msgInput").addEventListener("keypress", function(e) {
 </script>
 </body>
 </html>
-
-
