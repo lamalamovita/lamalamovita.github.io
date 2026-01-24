@@ -5,41 +5,92 @@
   <style>
     body { font-family: Arial; max-width: 600px; margin: 50px auto; padding: 20px; }
     #chatMessages { height: 400px; overflow-y: scroll; border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; background: #f9f9f9; }
-    #msgInput { width: 70%; padding: 10px; }
-    button { width: 25%; padding: 10px; background: #007bff; color: white; border: none; cursor: pointer; }
+    #msgInput { width: 60%; padding: 10px; }
+    button { width: 20%; padding: 10px; background: #007bff; color: white; border: none; cursor: pointer; }
+    #adminMode { background: #28a745; color: white; padding: 10px; margin-bottom: 10px; }
   </style>
 </head>
 <body>
   <h1>🌍 WORLDWIDE ANONYMNÍ CHAT</h1>
-  <p>Kdokoli z celého světa může napsat (bez registrace!)</p>
+  
+  <!-- ADMIN MODE tlačítko -->
+  <div id="adminMode" style="display:none;">
+    <strong>🟢 ADMIN MODE</strong> | <button onclick="toggleAdmin()">Vypnout</button>
+  </div>
+  
+  <!-- ADMIN přepínač (tajné: klikni 3x na titulek) -->
+  <h1 onclick="checkAdminMode()" style="cursor:pointer;">🌍 WORLDWIDE ANONYMNÍ CHAT</h1>
   
   <div id="chatMessages"></div>
   <input type="text" id="msgInput" placeholder="Napiš zprávu..." onkeypress="if(event.key=='Enter') sendMessage()">
-  <button onclick="sendMessage()">Odeslat 🚀</button>
+  <button onclick="sendMessage()">Odeslat</button>
 
   <script>
-    // ← TVŮJ ENDPOINT ZDE!
-    const FORMSPREE_URL = 'https://formspree.io/f/xaqelrva'; 
+    const FORMSPREE_URL = 'https://formspree.io/f/xaqelrva';
+    let isAdmin = false;
+    let adminClicks = 0;
+    
+    // TAJNÝ ADMIN MODE (3x klik na titulek)
+    function checkAdminMode() {
+      adminClicks++;
+      if(adminClicks >= 3) {
+        isAdmin = true;
+        document.getElementById('adminMode').style.display = 'block';
+        loadMessages(); // Načti staré zprávy
+      }
+    }
+    
+    function toggleAdmin() {
+      isAdmin = !isAdmin;
+      document.getElementById('adminMode').style.display = isAdmin ? 'block' : 'none';
+    }
     
     function sendMessage() {
       let msg = document.getElementById("msgInput").value.trim();
       if(msg) {
-        fetch(FORMSPREE_URL, {
-          method: 'POST',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({
-            email: 'chat@proton.me',
-            message: `🌍 **Anonymní:** ${msg}`,
-            _subject: 'Nová zpráva z WORLDWIDE CHAT'
-          })
-        }).then(() => {
-          document.getElementById("chatMessages").innerHTML += 
-            `<p><strong>Ty (${new Date().toLocaleTimeString()}):</strong> ${msg} ✅</p>`;
-          document.getElementById("msgInput").value = "";
-          document.getElementById("chatMessages").scrollTop = document.getElementById("chatMessages").scrollHeight;
-        });
+        let sender = isAdmin ? "🟢 ADMIN" : "🌍 Anonym";
+        
+        // Zobraz v chatu
+        document.getElementById("chatMessages").innerHTML += 
+          `<p><strong>${sender} (${new Date().toLocaleTimeString()}):</strong> ${msg}</p>`;
+        
+        // Odešli na Formspree (pouze anonymní zprávy)
+        if(!isAdmin) {
+          fetch(FORMSPREE_URL, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+              email: 'chat@proton.me',
+              message: `${sender}: ${msg}`,
+              _subject: 'Nová zpráva z WORLDWIDE CHAT'
+            })
+          });
+        }
+        
+        document.getElementById("msgInput").value = "";
+        document.getElementById("chatMessages").scrollTop = document.getElementById("chatMessages").scrollHeight;
       }
     }
+    
+    // Načti staré zprávy (localStorage)
+    function loadMessages() {
+      let messages = localStorage.getItem('chatMessages') || '[]';
+      messages = JSON.parse(messages);
+      messages.forEach(msg => {
+        document.getElementById("chatMessages").innerHTML += 
+          `<p><strong>${msg.sender} (${msg.time}):</strong> ${msg.text}</p>`;
+      });
+    }
+    
+    // Ulož zprávu
+    function saveMessage(sender, text) {
+      let messages = JSON.parse(localStorage.getItem('chatMessages') || '[]');
+      messages.push({sender, time: new Date().toLocaleTimeString(), text});
+      localStorage.setItem('chatMessages', JSON.stringify(messages));
+    }
+    
+    // Inicializace
+    loadMessages();
   </script>
 </body>
 </html>
