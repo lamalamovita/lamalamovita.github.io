@@ -1,96 +1,86 @@
 <!DOCTYPE html>
-<html>
+<html lang="cs">
 <head>
-  <title>🌍 WORLDWIDE CHAT</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Můj Web</title>
   <style>
-    body { font-family: Arial; max-width: 600px; margin: 50px auto; padding: 20px; background-color: #1e3a8a; color: white; }
-    #chatMessages { height: 400px; overflow-y: scroll; border: 1px solid #60a5fa; padding: 10px; margin-bottom: 10px; background: #1e40af; color: white; }
-    #msgInput { width: 60%; padding: 10px; }
-    button { width: 20%; padding: 10px; background: #007bff; color: white; border: none; cursor: pointer; }
-    #adminMode { background: #28a745; color: white; padding: 10px; margin-bottom: 10px; }
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #4a4a4a;
+      color: #ffffff;
+    }
+    h1 {
+      text-align: center;
+      border-bottom: 2px solid #888;
+      padding-bottom: 10px;
+    }
+    .nav-links {
+      text-align: center;
+      margin: 20px 0;
+    }
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 20px;
+      margin: 0 10px;
+      background-color: #666;
+      border-radius: 5px;
+      display: inline-block;
+    }
+    .nav-links a:hover {
+      background-color: #888;
+    }
+    .content {
+      background-color: #555;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .gallery img {
+      max-width: 100%;
+      border-radius: 5px;
+    }
+    pre {
+      background-color: #333;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+      font-size: 12px;
+      color: #0f0;
+    }
   </style>
 </head>
 <body>
-  <h1>🌍 WORLDWIDE ANONYMNÍ CHAT</h1>
+  <h1>🌐 Můj Web</h1>
   
-  <!-- ADMIN MODE tlačítko -->
-  <div id="adminMode" style="display:none;">
-    <strong>🟢 ADMIN MODE</strong> | <button onclick="toggleAdmin()">Vypnout</button>
+  <div class="nav-links">
+    <a href="#galerie">📷 Galerie</a>
+    <a href="#dokumenty">📄 Dokumenty</a>
+    <a href="kod.html">💻 Kód</a>
   </div>
   
-  <!-- ADMIN přepínač (tajné: klikni 3x na titulek) -->
-  <h1 onclick="checkAdminMode()" style="cursor:pointer;">🌍 WORLDWIDE ANONYMNÍ CHAT</h1>
+  <div class="content">
+    <h2 id="galerie">📷 Galerie</h2>
+    <div class="gallery">
+      <img src="obrazky/600.jpg" alt="Obrázek 600">
+    </div>
+  </div>
   
-  <div id="chatMessages"></div>
-  <input type="text" id="msgInput" placeholder="Napiš zprávu..." onkeypress="if(event.key=='Enter') sendMessage()">
-  <button onclick="sendMessage()">Odeslat</button>
-
-  <script>
-    const FORMSPREE_URL = 'https://formspree.io/f/xaqelrva';
-    let isAdmin = false;
-    let adminClicks = 0;
-    
-    // TAJNÝ ADMIN MODE (3x klik na titulek)
-    function checkAdminMode() {
-      adminClicks++;
-      if(adminClicks >= 3) {
-        isAdmin = true;
-        document.getElementById('adminMode').style.display = 'block';
-        loadMessages(); // Načti staré zprávy
-      }
-    }
-    
-    function toggleAdmin() {
-      isAdmin = !isAdmin;
-      document.getElementById('adminMode').style.display = isAdmin ? 'block' : 'none';
-    }
-    
-    function sendMessage() {
-      let msg = document.getElementById("msgInput").value.trim();
-      if(msg) {
-        let sender = isAdmin ? "🟢 ADMIN" : "🌍 Anonym";
-        
-        // Zobraz v chatu
-        document.getElementById("chatMessages").innerHTML += 
-          `<p><strong>${sender} (${new Date().toLocaleTimeString()}):</strong> ${msg}</p>`;
-        
-        // Odešli na Formspree (pouze anonymní zprávy)
-        if(!isAdmin) {
-          fetch(FORMSPREE_URL, {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-              email: 'chat@proton.me',
-              message: `${sender}: ${msg}`,
-              _subject: 'Nová zpráva z WORLDWIDE CHAT'
-            })
-          });
-        }
-        
-        document.getElementById("msgInput").value = "";
-        document.getElementById("chatMessages").scrollTop = document.getElementById("chatMessages").scrollHeight;
-      }
-    }
-    
-    // Načti staré zprávy (localStorage)
-    function loadMessages() {
-      let messages = localStorage.getItem('chatMessages') || '[]';
-      messages = JSON.parse(messages);
-      messages.forEach(msg => {
-        document.getElementById("chatMessages").innerHTML += 
-          `<p><strong>${msg.sender} (${msg.time}):</strong> ${msg.text}</p>`;
-      });
-    }
-    
-    // Ulož zprávu
-    function saveMessage(sender, text) {
-      let messages = JSON.parse(localStorage.getItem('chatMessages') || '[]');
-      messages.push({sender, time: new Date().toLocaleTimeString(), text});
-      localStorage.setItem('chatMessages', JSON.stringify(messages));
-    }
-    
-    // Inicializace
-    loadMessages();
-  </script>
+  <div class="content">
+    <h2 id="dokumenty">📄 Dokumenty</h2>
+    <ul>
+      <li><a href="dokumenty/test.txt" style="color: #fff;">test.txt</a></li>
+    </ul>
+  </div>
 </body>
 </html>

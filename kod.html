@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kód Webu</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 1000px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #4a4a4a;
+      color: #ffffff;
+    }
+    h1 {
+      text-align: center;
+      border-bottom: 2px solid #888;
+      padding-bottom: 10px;
+    }
+    .nav-links {
+      text-align: center;
+      margin: 20px 0;
+    }
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 20px;
+      margin: 0 10px;
+      background-color: #666;
+      border-radius: 5px;
+      display: inline-block;
+    }
+    .nav-links a:hover {
+      background-color: #888;
+    }
+    pre {
+      background-color: #333;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+      font-size: 12px;
+      color: #0f0;
+      border: 1px solid #666;
+    }
+    h2 {
+      margin-top: 30px;
+      border-bottom: 1px solid #666;
+      padding-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>💻 Kód Webu</h1>
+  
+  <div class="nav-links">
+    <a href="index.html">🏠 Domů</a>
+    <a href="index.html#galerie">📷 Galerie</a>
+    <a href="index.html#dokumenty">📄 Dokumenty</a>
+  </div>
+
+  <h2>📄 index.html</h2>
+  <pre id="index-code"></pre>
+
+  <h2>🎨 kod.html</h2>
+  <pre id="kod-code"></pre>
+
+  <script>
+    // Načte a zobrazí kód souborů
+    async function loadCode() {
+      try {
+        const indexResponse = await fetch('index.html');
+        const indexCode = await indexResponse.text();
+        document.getElementById('index-code').textContent = indexCode;
+
+        const kodResponse = await fetch('kod.html');
+        const kodCode = await kodResponse.text();
+        document.getElementById('kod-code').textContent = kodCode;
+      } catch (error) {
+        document.getElementById('index-code').textContent = 'Chyba při načítání kódu: ' + error.message;
+      }
+    }
+
+    loadCode();
+  </script>
+</body>
+</html>
