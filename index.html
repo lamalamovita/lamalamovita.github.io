@@ -4,31 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Secret Habit - Lama Lamovitá</title>
-    <base href="https://thinkific.com">
-    <link rel="stylesheet" href="https://thinkific.com">
     <style>
-        .moje-sekce { text-align: center; padding: 20px; background: white; border-bottom: 2px solid #2980b9; }
-        .moje-sekce img { width: 100%; max-width: 800px; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-        .moje-sekce p { font-size: 1.6em; font-weight: bold; font-family: 'Lato', sans-serif; color: #333; margin-top: 15px; }
-        .course-card { margin-top: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border-radius: 8px; overflow: hidden; background: white; max-width: 400px; margin-left: auto; margin-right: auto; }
+        body { font-family: 'Montserrat', sans-serif; background-color: #f4f4f4; margin: 0; color: #333; }
+        .moje-sekce { text-align: center; padding: 30px; background: white; border-bottom: 3px solid #2980b9; }
+        .moje-sekce img { width: 100%; max-width: 700px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .moje-sekce p { font-size: 1.8em; font-weight: bold; margin-top: 15px; color: #2c3e50; }
+        
+        .kurzy-container { max-width: 1000px; margin: 40px auto; padding: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .kurz-karta { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: 0.3s; }
+        .kurz-karta:hover { transform: translateY(-5px); }
+        .kurz-karta img { width: 100%; height: 200px; object-fit: cover; }
+        .kurz-obsah { padding: 20px; text-align: center; }
+        .btn { display: inline-block; padding: 10px 20px; background: #2980b9; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; }
     </style>
 </head>
-<body class="home-landing-page">
-    <!-- TVŮJ VZKAZ A FOTKA -->
+<body>
     <div class="moje-sekce">
         <img src="./uvod.jpg" alt="Uvítací fotka">
         <p>Trochu sem upravil web.. tady lama lamovitá</p>
     </div>
 
-    <!-- KOPIE DESIGNU KURZU -->
-    <div class="container" style="padding: 40px 20px; text-align: center;">
-        <h2 style="font-family: Montserrat, sans-serif;">Naše kurzy</h2>
-        <div class="course-card">
-            <img src="https://thinkific.com" style="width:100%;">
-            <div style="padding: 20px;">
-                <h3 style="margin: 0 0 10px 0;">Cesta z pornopasti</h3>
-                <p style="font-size: 1em; color: #666;">Online kurz pro svobodu v digitálním věku.</p>
-                <a href="https://thinkific.comcourses/cesta-z-pornopasti" style="display:inline-block; padding: 10px 20px; background: #2980b9; color: white; text-decoration: none; border-radius: 5px; margin-top: 10px;">Zobrazit kurz</a>
+    <div class="kurzy-container">
+        <!-- KURZ 1 -->
+        <div class="kurz-karta">
+            <img src="https://thinkific.com">
+            <div class="kurz-obsah">
+                <h3>Cesta z pornopasti</h3>
+                <p>Online kurz pro svobodu v digitálním věku.</p>
+                <a href="https://thinkific.com" class="btn">Zobrazit kurz</a>
+            </div>
+        </div>
+        
+        <!-- KURZ 2 -->
+        <div class="kurz-karta">
+            <img src="https://unsplash.com">
+            <div class="kurz-obsah">
+                <h3>Deník návyků</h3>
+                <p>Zapisuj si své pokroky každý den.</p>
+                <a href="./denik.html" class="btn" style="background:#27ae60;">Můj Deník</a>
             </div>
         </div>
     </div>
