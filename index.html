@@ -4,37 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Secret Habit - Lama Lamovitá</title>
+    <base href="https://thinkific.com">
+    <link rel="stylesheet" href="https://thinkific.com">
     <style>
-        body { font-family: 'Montserrat', sans-serif; background-color: #f8f9fa; margin: 0; color: #333; text-align: center; }
-        .hero { background: white; padding: 40px 20px; border-bottom: 1px solid #ddd; }
-        .hero img { width: 100%; max-width: 600px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        .container { max-width: 1000px; margin: 40px auto; padding: 20px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); transition: 0.3s; }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        .btn { display: inline-block; padding: 12px 25px; background: #2980b9; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; margin-top: 15px; }
+        .my-header { text-align:center; padding:20px; background:white; border-bottom:1px solid #ddd; }
+        .my-header img { width:100%; max-width:800px; border-radius:15px; }
+        .my-header p { font-size:1.5em; font-family: sans-serif; font-weight: bold; }
     </style>
 </head>
-<body>
-    <div class="hero">
+<body class="home-landing-page">
+    <div class="my-header">
         <img src="./uvod.jpg" alt="Uvítací fotka">
-        <h1>Trochu sem upravil web.. tady lama lamovitá</h1>
-        <p>Vítejte na mém rozcestníku pro kurzy Secret Habit.</p>
+        <p>Trochu sem upravil web.. tady lama lamovitá</p>
     </div>
 
-    <div class="container">
-        <div class="grid">
-            <div class="card">
-                <h3>Kurzy Secret Habit</h3>
-                <p>Kompletní nabídka kurzů pro budování lepších návyků.</p>
-                <a href="https://thinkific.com" class="btn">Otevřít kurzy</a>
-            </div>
-            <div class="card">
-                <h3>Můj Deník</h3>
-                <p>Zaznamenávejte si své pokroky každý den.</p>
-                <a href="./denik.html" class="btn" style="background:#27ae60;">Do deníku</a>
-            </div>
+    <!-- Statická kopie obsahu Thinkificu -->
+    <main class="home" id="main-content">
+        <div class="container">
+            <section class="course-list">
+                <div class="container">
+                    <ul class="course-card-grid">
+                        <li class="course-card-grid__item">
+                            <div class="course-card">
+                                <img src="https://thinkific.com" style="width:100%">
+                                <div class="course-card__body">
+                                    <h3 class="course-card__title">Cesta z pornopasti</h3>
+                                    <p>Online kurz pro ty, kteří chtějí svobodu.</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
         </div>
-    </div>
+    </main>
 </body>
 </html>
