@@ -1,48 +1,86 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Secret Habit - Lama Lamovitá</title>
-    <!-- Opravená základní adresa pro jejich obrázky -->
-    <base href="https://thinkific.com">
-    <link rel="stylesheet" href="https://thinkific.com">
-    <style>
-        body { margin: 0; background-color: #f1f4f6 !important; }
-        .lama-header { text-align: center; padding: 25px; background: white; border-bottom: 5px solid #2980b9; }
-        /* DŮLEŽITÉ: ./ vynutí hledání u tebe na GitHubu místo na Thinkificu */
-        .lama-header img { width: 100%; max-width: 800px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-        .lama-header p { font-size: 1.8em; font-weight: bold; margin-top: 15px; font-family: sans-serif; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secret Habit - Lama Lamovitá</title>
+  <style>
+    body { font-family: 'Arial', sans-serif; margin: 0; background-color: #f4f7f6; color: #333; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+    
+    /* TVOJE FOTKA A VZKAZ */
+    .lama-header { text-align: center; padding: 20px; background: white; border-bottom: 5px solid #2980b9; }
+    .lama-header img { width: 100%; max-width: 800px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    .lama-header p { font-size: 1.8em; font-weight: bold; margin-top: 15px; }
+
+    /* Header Šablony */
+    .header { background: #fff; padding: 20px 0; border-bottom: 1px solid #ddd; }
+    .header .container { display: flex; justify-content: space-between; align-items: center; }
+    .logo { color: #2980b9; margin: 0; }
+    nav a { text-decoration: none; color: #555; margin-left: 20px; font-weight: bold; }
+    .btn { background: #2980b9; color: white; padding: 8px 15px; border-radius: 5px; }
+
+    /* Hero */
+    .hero { background: #2c3e50; color: white; padding: 80px 0; text-align: center; }
+    .hero h2 { font-size: 2.5rem; margin-bottom: 10px; }
+    .btn-primary { background: #27ae60; color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px; font-size: 1.2rem; display: inline-block; margin-top: 20px; }
+
+    /* Features Grid */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; padding: 50px 0; }
+    .card { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center; }
+    
+    .footer { text-align: center; padding: 40px 0; color: #777; font-size: 0.9rem; }
+  </style>
 </head>
-<body class="home-landing-page">
+<body>
 
-    <div class="lama-header">
-        <!-- Tečka a lomítko jsou klíčové pro zobrazení tvé fotky -->
-        <img src="./uvod.jpg" alt="Moje fotka">
-        <p>Trochu sem upravil web.. tady lama lamovitá</p>
+<div class="lama-header">
+    <img src="./uvod.jpg" alt="Uvítací fotka">
+    <p>Trochu sem upravil web.. tady lama lamovitá</p>
+</div>
+
+<header class="header">
+  <div class="container">
+    <h1 class="logo">SecretHabit</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Program</a>
+      <a href="#">About</a>
+      <a href="#" class="btn">Join</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <h2>Build powerful habits that actually stick</h2>
+    <p>Transform your life with proven systems</p>
+    <a href="#" class="btn-primary">Start Now</a>
+  </div>
+</section>
+
+<section class="features">
+  <div class="container grid">
+    <div class="card">
+      <h3>Simple System</h3>
+      <p>No overwhelm. Just clarity.</p>
     </div>
+    <div class="card">
+      <h3>Daily Execution</h3>
+      <p>Action beats motivation.</p>
+    </div>
+    <div class="card">
+      <h3>Results</h3>
+      <p>Track real progress.</p>
+    </div>
+  </div>
+</section>
 
-    <header class="site-header" style="background:white; padding:20px; text-align:center; border-bottom:1px solid #e1e8ed;">
-        <img src="https://thinkific.com" style="max-height:40px;">
-    </header>
-
-    <main class="home">
-        <section class="hero" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://thinkific.com'); background-size: cover; padding: 100px 20px; text-align: center; color: white;">
-            <h1 style="font-size: 3rem; margin: 0;">Změňte své návyky</h1>
-        </section>
-
-        <div style="max-width: 1140px; margin: 50px auto; padding: 0 20px; display: flex; justify-content: center;">
-            <a href="https://thinkific.comcourses/cesta-z-pornopasti" style="text-decoration: none; background: white; border: 1px solid #e1e8ed; width: 350px; border-radius: 4px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-                <img src="https://thinkific.com" style="width:100%;">
-                <div style="padding: 20px;">
-                    <h3 style="color: #2d3e50; margin: 0 0 10px 0;">Cesta z pornopasti</h3>
-                    <p style="color: #5f6f7c; font-size: 0.9em;">Kurz pro vaši svobodu v digitálním věku.</p>
-                    <div style="color: #2980b9; font-weight: bold; margin-top: 15px;">ZOBRAZIT KURZ</div>
-                </div>
-            </a>
-        </div>
-    </main>
+<footer class="footer">
+  <div class="container">
+    <p>© 2026 SecretHabit</p>
+  </div>
+</footer>
 
 </body>
 </html>
