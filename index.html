@@ -5,20 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <base href="https://thinkific.com">
     <title>Secret Habit - Lama Lamovitá</title>
+    <!-- Oprava CSS odkazu, aby fungovaly fonty a barvy -->
     <link rel="stylesheet" href="https://thinkific.com">
 </head>
-<body>
+<body style="margin:0; padding:0;">
     <!-- TVŮJ VZKAZ A FOTKA -->
-    <div style="text-align:center; padding:20px; background:white; border-bottom:2px solid #eee;">
-        <img src="./uvod.jpg" style="width:100%; max-width:800px; border-radius:15px;">
+    <div style="text-align:center; padding:20px; background:white; border-bottom:2px solid #eee; position: relative; z-index: 10;">
+        <img src="./uvod.jpg" style="width:100%; max-width:800px; border-radius:15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
         <p style="font-size:1.5em; font-family: sans-serif; margin-top:15px;">
             <strong>Trochu sem upravil web.. tady lama lamovitá</strong>
         </p>
     </div>
 
     <!-- TADY SE NAČTE OBSAH PŘÍMO Z ORIGINÁLU -->
-    <div id="include-target"></div>
-    <iframe src="https://thinkific.com" style="width:100%; height:100vh; border:none;"></iframe>
+    <iframe src="https://thinkific.com" style="width:100%; height:100vh; border:none; margin-top:-5px;"></iframe>
 
 </body>
 </html>
