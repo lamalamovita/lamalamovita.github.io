@@ -7,36 +7,30 @@
     <base href="https://thinkific.com">
     <link rel="stylesheet" href="https://thinkific.com">
     <style>
-        .my-header { text-align:center; padding:20px; background:white; border-bottom:1px solid #ddd; }
-        .my-header img { width:100%; max-width:800px; border-radius:15px; }
-        .my-header p { font-size:1.5em; font-family: sans-serif; font-weight: bold; }
+        .moje-sekce { text-align: center; padding: 20px; background: white; border-bottom: 2px solid #2980b9; }
+        .moje-sekce img { width: 100%; max-width: 800px; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .moje-sekce p { font-size: 1.6em; font-weight: bold; font-family: 'Lato', sans-serif; color: #333; margin-top: 15px; }
+        .course-card { margin-top: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border-radius: 8px; overflow: hidden; background: white; max-width: 400px; margin-left: auto; margin-right: auto; }
     </style>
 </head>
 <body class="home-landing-page">
-    <div class="my-header">
+    <!-- TVŮJ VZKAZ A FOTKA -->
+    <div class="moje-sekce">
         <img src="./uvod.jpg" alt="Uvítací fotka">
         <p>Trochu sem upravil web.. tady lama lamovitá</p>
     </div>
 
-    <!-- Statická kopie obsahu Thinkificu -->
-    <main class="home" id="main-content">
-        <div class="container">
-            <section class="course-list">
-                <div class="container">
-                    <ul class="course-card-grid">
-                        <li class="course-card-grid__item">
-                            <div class="course-card">
-                                <img src="https://thinkific.com" style="width:100%">
-                                <div class="course-card__body">
-                                    <h3 class="course-card__title">Cesta z pornopasti</h3>
-                                    <p>Online kurz pro ty, kteří chtějí svobodu.</p>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </section>
+    <!-- KOPIE DESIGNU KURZU -->
+    <div class="container" style="padding: 40px 20px; text-align: center;">
+        <h2 style="font-family: Montserrat, sans-serif;">Naše kurzy</h2>
+        <div class="course-card">
+            <img src="https://thinkific.com" style="width:100%;">
+            <div style="padding: 20px;">
+                <h3 style="margin: 0 0 10px 0;">Cesta z pornopasti</h3>
+                <p style="font-size: 1em; color: #666;">Online kurz pro svobodu v digitálním věku.</p>
+                <a href="https://thinkific.comcourses/cesta-z-pornopasti" style="display:inline-block; padding: 10px 20px; background: #2980b9; color: white; text-decoration: none; border-radius: 5px; margin-top: 10px;">Zobrazit kurz</a>
+            </div>
         </div>
-    </main>
+    </div>
 </body>
 </html>
