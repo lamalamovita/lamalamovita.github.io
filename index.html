@@ -3,44 +3,83 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="https://thinkific.com">
     <title>Secret Habit - Lama Lamovitá</title>
-    <!-- Načtení stejného stylu, jaký má ://thinkific.com -->
+    <!-- Originální styly Thinkific -->
     <link rel="stylesheet" href="https://thinkific.com">
-    <link href="https://googleapis.com" rel="stylesheet">
+    <link href="https://googleapis.com|Lato:400,700" rel="stylesheet">
     <style>
-        .lama-header { text-align: center; padding: 20px; background: #fff; border-bottom: 3px solid #2980b9; }
-        .lama-header img { width: 100%; max-width: 800px; border-radius: 15px; }
-        .lama-header p { font-size: 1.8em; font-weight: bold; margin-top: 15px; font-family: 'Montserrat', sans-serif; }
+        /* Tvoje speciální úprava nahoře */
+        .lama-header { 
+            text-align: center; 
+            padding: 20px; 
+            background: #ffffff; 
+            border-bottom: 5px solid #2980b9; 
+            position: relative; 
+            z-index: 9999;
+        }
+        .lama-header img { width: 100%; max-width: 800px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .lama-header p { font-size: 1.8em; font-weight: bold; margin-top: 15px; font-family: 'Montserrat', sans-serif; color: #2d3e50; }
+        
+        /* Oprava zobrazení mřížky kurzů */
+        .course-card-grid { display: flex !important; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 40px 20px; list-style: none; }
+        .course-card { width: 350px; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.1); text-decoration: none; color: inherit; }
     </style>
 </head>
 <body class="home-landing-page">
+
+    <!-- TVOJE FOTKA A VZKAZ -->
     <div class="lama-header">
         <img src="./uvod.jpg" alt="Uvítací fotka">
         <p>Trochu sem upravil web.. tady lama lamovitá</p>
     </div>
 
-    <!-- Tady začíná originální struktura Thinkificu -->
-    <main class="home" id="main-content">
+    <!-- ORIGINÁLNÍ STRUKTURA WEBU -->
+    <header class="site-header">
         <div class="container">
-            <section class="course-list">
-                <div class="container">
-                    <ul class="course-card-grid">
-                        <li class="course-card-grid__item">
-                            <a class="course-card" href="https://://thinkific.com/courses/cesta-z-pornopasti">
-                                <div class="course-card__img-container">
-                                    <img src="https://thinkific.com" style="width:100%">
-                                </div>
-                                <div class="course-card__body">
-                                    <h3 class="course-card__title">Cesta z pornopasti</h3>
-                                    <p>Online kurz pro ty, kteří chtějí svobodu.</p>
-                                    <div class="course-card__price">Zdarma</div>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </section>
+            <a href="/" class="site-header__logo"><img src="https://thinkific.com" alt="Secret Habit" style="max-height: 50px;"></a>
         </div>
+    </header>
+
+    <main class="home" id="main-content">
+        <section class="course-list">
+            <div class="container">
+                <ul class="course-card-grid">
+                    <li class="course-card-grid__item">
+                        <a class="course-card" href="https://thinkific.comcourses/cesta-z-pornopasti">
+                            <div class="course-card__img-container">
+                                <img src="https://thinkific.com" alt="Cesta z pornopasti">
+                            </div>
+                            <div class="course-card__body">
+                                <h3 class="course-card__title">Cesta z pornopasti</h3>
+                                <p>Online kurz pro ty, kteří chtějí svobodu v digitálním věku.</p>
+                                <div class="course-card__price">Zdarma</div>
+                            </div>
+                        </a>
+                    </li>
+                    <!-- Přidán tvůj Deník jako další karta v mřížce -->
+                    <li class="course-card-grid__item">
+                        <a class="course-card" href="./denik.html">
+                            <div class="course-card__img-container">
+                                <img src="https://unsplash.com" alt="Deník">
+                            </div>
+                            <div class="course-card__body">
+                                <h3 class="course-card__title">Můj osobní deník</h3>
+                                <p>Tady lama lamovitá sleduje své denní pokroky.</p>
+                                <div class="course-card__price" style="color: #27ae60;">Otevřít</div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
     </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2026 Secret Habit - Upraveno Lamou Lamovitou</p>
+        </div>
+    </footer>
+
 </body>
 </html>
