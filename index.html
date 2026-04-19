@@ -2,49 +2,47 @@
 <html lang="cs">
 <head>
     <meta charset="utf-8">
-    <base href="https://thinkific.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Secret Habit - Lama Lamovitá</title>
-    <!-- Tady jsou ty originální styly, co dělají ten správný podklad a vzhled -->
+    <!-- Opravená základní adresa pro jejich obrázky -->
+    <base href="https://thinkific.com">
     <link rel="stylesheet" href="https://thinkific.com">
     <style>
-        .lama-extra { text-align: center; padding: 20px; background: #fff; border-bottom: 5px solid #2980b9; }
-        .lama-extra img { width: 100%; max-width: 800px; border-radius: 15px; }
+        body { margin: 0; background-color: #f1f4f6 !important; }
+        .lama-header { text-align: center; padding: 25px; background: white; border-bottom: 5px solid #2980b9; }
+        /* DŮLEŽITÉ: ./ vynutí hledání u tebe na GitHubu místo na Thinkificu */
+        .lama-header img { width: 100%; max-width: 800px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .lama-header p { font-size: 1.8em; font-weight: bold; margin-top: 15px; font-family: sans-serif; }
     </style>
 </head>
 <body class="home-landing-page">
-    <div class="lama-extra">
-        <img src="./uvod.jpg">
-        <p style="font-size: 2em; font-weight: bold;">Trochu sem upravil web.. tady lama lamovitá</p>
+
+    <div class="lama-header">
+        <!-- Tečka a lomítko jsou klíčové pro zobrazení tvé fotky -->
+        <img src="./uvod.jpg" alt="Moje fotka">
+        <p>Trochu sem upravil web.. tady lama lamovitá</p>
     </div>
 
-    <!-- TADY ZAČÍNÁ TEN ORIGINÁLNÍ STATICKÝ OBSAH -->
-    <header class="site-header">
-        <div class="container">
-            <a href="/"><img src="https://thinkific.com" style="max-height:40px;"></a>
-        </div>
+    <header class="site-header" style="background:white; padding:20px; text-align:center; border-bottom:1px solid #e1e8ed;">
+        <img src="https://thinkific.com" style="max-height:40px;">
     </header>
 
     <main class="home">
-        <section class="hero" style="background-image: url('https://thinkific.com'); background-size: cover; padding: 100px 0; text-align: center; color: white;">
-            <h1>Změňte své návyky</h1>
+        <section class="hero" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://thinkific.com'); background-size: cover; padding: 100px 20px; text-align: center; color: white;">
+            <h1 style="font-size: 3rem; margin: 0;">Změňte své návyky</h1>
         </section>
 
-        <section class="course-list">
-            <div class="container" style="padding: 50px 0;">
-                <ul class="course-card-grid" style="display: flex; justify-content: center; list-style: none;">
-                    <li>
-                        <a class="course-card" href="https://thinkific.comcourses/cesta-z-pornopasti" style="text-decoration: none; display: block; background: white; border: 1px solid #ddd; width: 350px;">
-                            <img src="https://thinkific.com" style="width: 100%;">
-                            <div style="padding: 20px;">
-                                <h3 style="color: #333;">Cesta z pornopasti</h3>
-                                <p style="color: #666;">Protože věříme, že porno krade vztahům intimitu a péči...</p>
-                                <div style="color: #2980b9; font-weight: bold;">Zobrazit kurz</div>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </section>
+        <div style="max-width: 1140px; margin: 50px auto; padding: 0 20px; display: flex; justify-content: center;">
+            <a href="https://thinkific.comcourses/cesta-z-pornopasti" style="text-decoration: none; background: white; border: 1px solid #e1e8ed; width: 350px; border-radius: 4px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                <img src="https://thinkific.com" style="width:100%;">
+                <div style="padding: 20px;">
+                    <h3 style="color: #2d3e50; margin: 0 0 10px 0;">Cesta z pornopasti</h3>
+                    <p style="color: #5f6f7c; font-size: 0.9em;">Kurz pro vaši svobodu v digitálním věku.</p>
+                    <div style="color: #2980b9; font-weight: bold; margin-top: 15px;">ZOBRAZIT KURZ</div>
+                </div>
+            </a>
+        </div>
     </main>
+
 </body>
 </html>
